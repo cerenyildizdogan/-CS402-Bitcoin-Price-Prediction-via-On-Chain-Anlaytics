@@ -43,7 +43,7 @@ from sklearn.preprocessing import MinMaxScaler
 
 creds, _ = default()
 gc = gspread.authorize(creds)
-worksheet = gc.open('Selected OnChain Data (2/16/18 - 31/10/20)').sheet1
+worksheet = gc.open('Selected OnChain Data (16/2/18 - 31/10/20)').sheet1
 rows = worksheet.get_all_values()
 df = pd.DataFrame.from_records(rows)
 df.columns = df.iloc[0]
