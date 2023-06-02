@@ -41,6 +41,7 @@ from sklearn.preprocessing import MinMaxScaler
 
 """**Uploading the Data**"""
 
+"""
 creds, _ = default()
 gc = gspread.authorize(creds)
 worksheet = gc.open('Selected OnChain Data (16/2/18 - 31/10/20)').sheet1
@@ -49,6 +50,16 @@ df = pd.DataFrame.from_records(rows)
 df.columns = df.iloc[0]
 df = df.iloc[1:]
 df.set_index("Date", inplace=True)
+for col in df.columns:
+    df[col] = df[col].astype('float32')
+df
+"""
+
+import os
+os.getcwd()
+df = pd.read_excel("BTC Traditional Price Data (16_2_18 - 31_10_20).xlsx")
+df = pd.DataFrame.from_records(df)
+df.set_index('Date', inplace=True)
 for col in df.columns:
     df[col] = df[col].astype('float32')
 df
